@@ -2,17 +2,6 @@ import os
 
 ''' GENERATE SECRET KEY '''
 
-with open('.ctfd_secret_key', 'a+b') as secret:
-    secret.seek(0)  # Seek to beginning of file since a+ mode leaves you at the end and w+ deletes the file
-    key = secret.read()
-    if not key:
-        key = os.urandom(64)
-        secret.write(key)
-        secret.flush()
-
-''' SERVER SETTINGS '''
-
-
 class Config(object):
     '''
     SECRET_KEY is the secret value used to creation sessions and sign strings. This should be set to a random string. In the
@@ -78,6 +67,15 @@ class Config(object):
     you can use the CTFd S3 plugin: https://github.com/ColdHeat/CTFd-S3-plugin
     '''
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
+
+    ACCESS_KEY_ID = os.environ.get('ACCESS_KEY_ID')
+
+    SECRET_ACCESS_KEY = os.environ.get('SECRET_ACCESS_KEY')
+
+    BUCKET = os.environ.get('BUCKET')
+
+    S3_ENDPOINT_URL = os.environ.get('S3_ENDPOINT_URL')
+
 
     '''
     TEMPLATES_AUTO_RELOAD specifies whether Flask should check for modifications to templates and
