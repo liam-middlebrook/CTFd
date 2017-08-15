@@ -1,0 +1,3 @@
+[submodule "CTFd/plugins/ctfd-s3-plugin"]
+	path = CTFd/plugins/ctfd-s3-plugin
+	url = git://github.com/liam-middlebrook/ctfd-s3-plugin.git
